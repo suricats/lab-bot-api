@@ -1,5 +1,6 @@
 package restAPI.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import restAPI.domain.Billing;
 import restAPI.domain.Contracts;
 import restAPI.domain.Couverture;
 import restAPI.domain.Risk;
+import utils.Link;
 
 @RestController
 @RequestMapping("/insurance/contract")
@@ -38,15 +40,21 @@ public class ContractController {
 	
 	/////////////////////////RISK/////////////////////////
 	@RequestMapping(value="ID{idContrat}/risk", produces = "application/json")
-    public ResponseEntity<List<Risk>> getRisk(HttpServletRequest request,
+    public ResponseEntity<List<Link>> getRisk(HttpServletRequest request,
     		@PathVariable("idContrat") String idContrat) {
 		System.out.println(idContrat);
-		List<Risk> greeting = new Contracts(idContrat).getObjetCouvert();
-		for(int i=0; i<greeting.size();i++){
-			greeting.get(i).add(linkTo(methodOn(ContractController.class).
-					getCouverture(request,idContrat,greeting.get(i).getIdentifiant(),"lll")).withSelfRel());
+		List<Risk> risk = new Contracts(idContrat).getObjetCouvert();
+		List<Link> listLink = new ArrayList<>();
+		for(int j=0; j<risk.size();j++){
+			listLink.add(new Link());
 		}
-		return new ResponseEntity<List<Risk>>(greeting, HttpStatus.OK);
+		for(int i=0; i<risk.size();i++){
+			listLink.get(i).add(linkTo(methodOn(ContractController.class).
+					getCouverture(request,idContrat,risk.get(i).getIdentifiant(),"lll")).withSelfRel());
+			/*risk.get(i).add(linkTo(methodOn(ContractController.class).
+					getBilling(request,idContrat,risk.get(i).getIdentifiant())).withSelfRel());*/
+		}
+		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
     }
 	
 	@RequestMapping(value="ID{idContrat}/risk/ID{idObject}/couverture", produces = "application/json")
@@ -54,17 +62,36 @@ public class ContractController {
     		@PathVariable("idContrat") String idContrat,
     		@PathVariable("idObject") String idObject,
     		@RequestParam(value="inquiry") String name) {
-		 System.out.println("dans getCouverture");
-		 return new ResponseEntity<Couverture>(new Contracts(idContrat).getObjetCouvert().get(0).getCouverture(), HttpStatus.OK);
+		System.out.println("dans getCouverture");
+		return new ResponseEntity<Couverture>(new Contracts(idContrat).getObjetCouvert().get(0).getCouverture(), HttpStatus.OK);
     }
 	
 
 	/////////////////////////BILLING/////////////////////////
 	@RequestMapping(value="ID{idContrat}/billings", produces = "application/json")
-    public ResponseEntity<List<Billing>> getBillings(HttpServletRequest request,
+    public ResponseEntity<List<Link>> getBillings(HttpServletRequest request,
     		@PathVariable("idContrat") String idContrat) {
-		 System.out.println("dans getBillings");
-		 return new ResponseEntity<List<Billing>>(new Contracts(idContrat).getBillings(), HttpStatus.OK);
+		System.out.println("dans getBillings");
+		List<Billing> billings = new Contracts(idContrat).getBillings();
+		List<Link> listLink = new ArrayList<>();
+		for(int j=0; j<billings.size();j++){
+			listLink.add(new Link());
+		}
+		for(int i=0; i<billings.size();i++){
+			listLink.get(i).add(linkTo(methodOn(ContractController.class).
+					getBilling(request,idContrat,billings.get(i).getIdentifiant())).withSelfRel());
+			/*billings.get(i).add(linkTo(methodOn(ContractController.class).
+					getBilling(request,idContrat,billings.get(i).getIdentifiant())).withSelfRel());*/
+		}
+		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
     }
-		
+	
+	@RequestMapping(value="ID{idContrat}/billings/ID{idBilling}", produces = "application/json")
+    public ResponseEntity<Billing> getBilling(HttpServletRequest request,
+    		@PathVariable("idContrat") String idContrat,
+    		@PathVariable("idBilling") String idBilling) {
+		System.out.println("dans getBilling");
+		return new ResponseEntity<Billing>(new Contracts(idContrat).getBillings().get(0), HttpStatus.OK);
+    }	
+	
 }
