@@ -1,4 +1,4 @@
-package restAPI.domain;
+package contracts.domain;
 
 import org.springframework.hateoas.ResourceSupport;
 

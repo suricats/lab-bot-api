@@ -1,7 +1,7 @@
-package restAPI.enumeration;
+package contracts.domain;
 
 public enum Frequency {
-	annuelle,
+	annuel,
 	mensuel,
 	hebdomadaire
 

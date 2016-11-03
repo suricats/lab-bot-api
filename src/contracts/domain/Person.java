@@ -1,4 +1,4 @@
-package restAPI.domain;
+package contracts.domain;
 
 import org.springframework.hateoas.ResourceSupport;
 
@@ -10,13 +10,7 @@ public class Person extends ResourceSupport {
 	private String last_name;
 	private String postal_code;
 	
-	public Person(){
-		this.birth_date = "1999-18-09";
-		this.client_number = "PE563892";
-		this.first_name = "first_name";
-		this.last_name = "last_name";
-		this.postal_code = "75005";
-	}
+	public Person(){ }
 	
 	public Person(String birth_date, String client_number,
 			String first_name, String last_name,

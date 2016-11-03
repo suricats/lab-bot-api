@@ -1,9 +1,6 @@
-package restAPI.domain;
+package contracts.domain;
 
 import org.springframework.hateoas.ResourceSupport;
-
-import restAPI.enumeration.Frequency;
-import restAPI.enumeration.MethodPaiement;
 
 public class Billing extends ResourceSupport {
 	
@@ -11,10 +8,10 @@ public class Billing extends ResourceSupport {
 	private double amount;
 	private Frequency frequency;
 	private String next_date;
-	private MethodPaiement methode;
+	private PayementMethod methode;
 	
 	public Billing(String identifiant,double amount, Frequency frequency, String next_date,
-			MethodPaiement methode){
+			PayementMethod methode){
 		this.identifiant=identifiant;
 		this.amount=amount;
 		this.frequency=frequency;
@@ -54,11 +51,11 @@ public class Billing extends ResourceSupport {
 		this.next_date = next_date;
 	}
 
-	public MethodPaiement getMethode() {
+	public PayementMethod getMethode() {
 		return methode;
 	}
 
-	public void setMethode(MethodPaiement methode) {
+	public void setMethode(PayementMethod methode) {
 		this.methode = methode;
 	}
 
