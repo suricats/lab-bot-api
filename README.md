@@ -1,1 +1,1 @@
-# lab-bot
+# lab-bot-api
