@@ -16,8 +16,8 @@ public class FakeDataGenerator {
 	public static Person pers3 = new Person("1999-20-09","563155","anna","kstrkv","75005");
 	public static Person pers = new Person("1999-20-09","563155","philippe","arthaux","75005");
 	
-	public static Contract getFakeContrat(){
-		Contract contrat = new Contract();
+	public static Contract getFakeContrat(String idContrat){
+		Contract contrat = new Contract(idContrat);
 		
 		contrat.addObjetCouvert(new Risk("kockeo","voiture",250, 100, "RC", "05-11-2016", new Couverture(true,true,true)));
 		contrat.addObjetCouvert(new Risk("kockeo","voiture",250, 100, "RC", "05-11-2016", new Couverture(false,false,false)));
