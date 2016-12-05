@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,6 @@ import contracts.domain.Couverture;
 import contracts.domain.PartyRole;
 import contracts.domain.Risk;
 import utils.FakeDataGenerator;
-import utils.Link;
 
 @RestController
 @RequestMapping("/insurance/contract")
@@ -46,11 +46,8 @@ public class ContractController {
 
 		List<Risk> risk = FakeDataGenerator.getFakeContrat(idContrat).getObjetsCouverts();
 		List<Link> listLink = new ArrayList<>();
-		for(int j=0; j<risk.size();j++){
-			listLink.add(new Link());
-		}
 		for(int i=0; i<risk.size();i++){
-			listLink.get(i).add(linkTo(methodOn(ContractController.class).
+			listLink.add(linkTo(methodOn(ContractController.class).
 					getCouverture(request,idContrat,risk.get(i).getIdentifiant())).withSelfRel());
 		}
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
@@ -75,11 +72,9 @@ public class ContractController {
 
 		List<Billing> billings = FakeDataGenerator.getFakeContrat(idContrat).getBillings();
 		List<Link> listLink = new ArrayList<>();
-		for(int j=0; j<billings.size();j++){
-			listLink.add(new Link());
-		}
+		
 		for(int i=0; i<billings.size();i++){
-			listLink.get(i).add(linkTo(methodOn(ContractController.class).
+			listLink.add(linkTo(methodOn(ContractController.class).
 					getBilling(request,idContrat,billings.get(i).getIdentifiant())).withSelfRel());
 		}
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
@@ -103,11 +98,9 @@ public class ContractController {
 
 		List<PartyRole> partyRoles = FakeDataGenerator.getFakeContrat(idContrat).getPartyRoles();
 		List<Link> listLink = new ArrayList<>();
-		for(int j=0; j<partyRoles.size();j++){
-			listLink.add(new Link());
-		}
+		
 		for(int i=0; i<partyRoles.size();i++){
-			listLink.get(i).add(linkTo(methodOn(ContractController.class).
+			listLink.add(linkTo(methodOn(ContractController.class).
 					getPartyRole(request,idContrat,partyRoles.get(i).getIdentifiant())).withSelfRel());
 		}
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);

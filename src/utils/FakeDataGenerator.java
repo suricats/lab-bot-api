@@ -19,17 +19,17 @@ public class FakeDataGenerator {
 	public static Contract getFakeContrat(String idContrat){
 		Contract contrat = new Contract(idContrat);
 		
-		contrat.addObjetCouvert(new Risk("kockeo","voiture",250, 100, "RC", "05-11-2016", new Couverture(true,true,true)));
-		contrat.addObjetCouvert(new Risk("kockeo","voiture",250, 100, "RC", "05-11-2016", new Couverture(false,false,false)));
+		contrat.addObjetCouvert(new Risk("02453620","voiture",250, 100, "RC", "05-11-2016", new Couverture(true,true,true)));
+		contrat.addObjetCouvert(new Risk("8944710","voiture",250, 100, "RC", "05-11-2016", new Couverture(false,false,false)));
 		contrat.addObjetCouvert(new Risk("52665236","maison",1000, 100, "RC2", "05-11-2016", new Couverture(true,false,true)));
 		
 		contrat.addBilling(new Billing("96268885",123.97, Frequency.annuel, "2016-11-10", PayementMethod.prelevement));
 		contrat.addBilling(new Billing("2355596664",542.97, Frequency.mensuel, "2016-11-10", PayementMethod.cheque));
 		contrat.addBilling(new Billing("123987456",542.97, Frequency.hebdomadaire, "2017-11-10", PayementMethod.cheque));
 		
-		contrat.addPartyRole(new PartyRole("eee78595","2016-12-25", new Person("1994-12-05", "5639358", 
+		contrat.addPartyRole(new PartyRole("78595","2016-12-25", new Person("1994-12-05", "5639358", 
 				"thomas", "dupont", "93700"), "owner"));
-		contrat.addPartyRole(new PartyRole("eee787634", "2016-12-25", new Person("1994-12-05", "7596055", 
+		contrat.addPartyRole(new PartyRole("787634", "2016-12-25", new Person("1994-12-05", "7596055", 
 				"eric", "dupuit", "75005"), "owner"));
 		return contrat;
 	}
