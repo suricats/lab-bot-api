@@ -1,8 +1,6 @@
 package contracts.domain;
 
-import org.springframework.hateoas.ResourceSupport;
-
-public class Person extends ResourceSupport {
+public class Person {
 
 	private String birth_date;
 	private String client_number;

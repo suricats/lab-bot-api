@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import contracts.domain.Person;
-import utils.FakeDataGenerator;
+import contracts.utils.FakeDataGenerator;
 
 @RestController
 @RequestMapping("/insurance/persons")

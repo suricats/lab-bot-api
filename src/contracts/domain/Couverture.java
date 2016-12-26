@@ -1,8 +1,6 @@
 package contracts.domain;
 
-import org.springframework.hateoas.ResourceSupport;
-
-public class Couverture extends ResourceSupport{
+public class Couverture {
 
 	private boolean incendie;
 	private boolean inondation;

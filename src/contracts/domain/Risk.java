@@ -1,11 +1,6 @@
 package contracts.domain;
 
-import org.springframework.hateoas.ResourceSupport;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class Risk extends ResourceSupport{
+public class Risk {
 	
 	private String identifiant;
 	private String name;
@@ -15,13 +10,6 @@ public class Risk extends ResourceSupport{
 	private String label;
 	private String end_date;
 	private Couverture couverture;
-	
-	@JsonCreator
-    public Risk(@JsonProperty("content") String content) {
-        this.content = content;
-    }
-	
-	public Risk(){}
 	
 	public Risk(String identifiant,String name,int montant, int bonusMalus,
 			String label, String end_date, Couverture couverture){

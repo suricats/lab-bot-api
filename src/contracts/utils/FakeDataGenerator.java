@@ -1,4 +1,4 @@
-package utils;
+package contracts.utils;
 
 import contracts.domain.Billing;
 import contracts.domain.Contract;
@@ -32,6 +32,23 @@ public class FakeDataGenerator {
 		contrat.addPartyRole(new PartyRole("787634", "2016-12-25", new Person("1994-12-05", "7596055", 
 				"eric", "dupuit", "75005"), "owner"));
 		return contrat;
+	}
+
+	public static Risk getFakeRisk() {
+		return new Risk("kockeo","voiture",250, 100, "RC", "05-11-2016", new Couverture(true,true,true));
+	}
+
+	public static PartyRole getFakePartyRole() {
+		return new PartyRole("eee78595","2016-12-25", new Person("1994-12-05", "5639358", 
+				"thomas", "dupont", "93700"), "owner");
+	}
+	
+	public static Billing getFakeBilling() {
+		return new Billing("96268885",123.97, Frequency.annuel, "2016-11-10", PayementMethod.prelevement);
+	}
+	
+	public static Couverture getFakeCouvertureAllTrue() {
+		return new Couverture(true, true, true);
 	}
 	
 }

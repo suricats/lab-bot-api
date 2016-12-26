@@ -1,13 +1,15 @@
 package contracts.domain;
 
-import org.springframework.hateoas.ResourceSupport;
-
-public class PartyRole extends ResourceSupport  {
+public class PartyRole {
 
 	private String identifiant;
 	private String end_date;
 	private Person person;
 	private String type;
+	
+	public PartyRole(String identifiant){
+		this.identifiant = identifiant;
+	}
 	
 	public PartyRole(String identifiant, String end_date, Person person, String type){
 		this.identifiant=identifiant;

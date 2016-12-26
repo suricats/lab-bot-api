@@ -21,7 +21,7 @@ import contracts.domain.Contract;
 import contracts.domain.Couverture;
 import contracts.domain.PartyRole;
 import contracts.domain.Risk;
-import utils.FakeDataGenerator;
+import contracts.utils.FakeDataGenerator;
 
 @RestController
 @RequestMapping("/insurance/contract")
