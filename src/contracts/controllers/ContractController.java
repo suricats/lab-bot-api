@@ -20,6 +20,7 @@ import contracts.domain.Billing;
 import contracts.domain.Contract;
 import contracts.domain.Couverture;
 import contracts.domain.PartyRole;
+import contracts.domain.Rib;
 import contracts.domain.Risk;
 import contracts.utils.FakeDataGenerator;
 
@@ -115,6 +116,14 @@ public class ContractController {
 		Random random = new Random();
 		int rand = random.nextInt(c.getPartyRoles().size());
 		return new ResponseEntity<PartyRole>(c.getPartyRoles().get(rand), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="ID-{idContrat}/rib", produces = "application/json ; charset=UTF-8")
+	public ResponseEntity<Rib> getRib(HttpServletRequest request,
+			@PathVariable("idContrat") String idContrat) {
+
+		Contract c = FakeDataGenerator.getFakeContrat(idContrat);
+		return new ResponseEntity<Rib>(c.getListRib().get(0), HttpStatus.OK);
 	}
 
 }

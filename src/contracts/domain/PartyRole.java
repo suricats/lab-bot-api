@@ -4,6 +4,7 @@ public class PartyRole {
 
 	private String identifiant;
 	private String end_date;
+	private String image;
 	private Person person;
 	private String type;
 	
@@ -11,9 +12,10 @@ public class PartyRole {
 		this.identifiant = identifiant;
 	}
 	
-	public PartyRole(String identifiant, String end_date, Person person, String type){
+	public PartyRole(String identifiant, String end_date, String image, Person person, String type){
 		this.identifiant=identifiant;
 		this.end_date=end_date;
+		this.image=image;
 		this.person=person;
 		this.type=type;
 	}
@@ -34,6 +36,14 @@ public class PartyRole {
 		this.end_date = end_date;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	public Person getPerson() {
 		return person;
 	}

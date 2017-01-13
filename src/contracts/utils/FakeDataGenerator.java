@@ -7,6 +7,7 @@ import contracts.domain.Frequency;
 import contracts.domain.PartyRole;
 import contracts.domain.PayementMethod;
 import contracts.domain.Person;
+import contracts.domain.Rib;
 import contracts.domain.Risk;
 
 public class FakeDataGenerator {
@@ -27,10 +28,16 @@ public class FakeDataGenerator {
 		contrat.addBilling(new Billing("2355596664",542.97, Frequency.mensuel, "2016-11-10", PayementMethod.cheque));
 		contrat.addBilling(new Billing("123987456",542.97, Frequency.hebdomadaire, "2017-11-10", PayementMethod.cheque));
 		
-		contrat.addPartyRole(new PartyRole("78595","2016-12-25", new Person("1994-12-05", "5639358", 
+		contrat.addPartyRole(new PartyRole("78595","2016-12-25",
+				"http://animalfactguide.com/wp-content/uploads/2013/01/iStock_000006798074XSmall.jpg",
+				new Person("1994-12-05", "5639358", 
 				"thomas", "dupont", "93700"), "owner"));
-		contrat.addPartyRole(new PartyRole("787634", "2016-12-25", new Person("1994-12-05", "7596055", 
+		contrat.addPartyRole(new PartyRole("787634", "2016-12-25",
+				"http://www.suricats-consulting.com/wp-content/uploads/2016/05/A1-01-150x150.png",
+				new Person("1994-12-05", "7596055", 
 				"eric", "dupuit", "75005"), "owner"));
+		
+		contrat.addRib(new Rib("https://mabanque.bnpparibas/rsc/contrib/image/particuliers/gabarits-libres/rib.jpg"));
 		return contrat;
 	}
 
@@ -39,7 +46,9 @@ public class FakeDataGenerator {
 	}
 
 	public static PartyRole getFakePartyRole() {
-		return new PartyRole("eee78595","2016-12-25", new Person("1994-12-05", "5639358", 
+		return new PartyRole("eee78595","2016-12-25",
+				"http://www.suricats-consulting.com/wp-content/uploads/2016/05/A1-01-150x150.png",
+				new Person("1994-12-05", "5639358", 
 				"thomas", "dupont", "93700"), "owner");
 	}
 	
@@ -51,4 +60,7 @@ public class FakeDataGenerator {
 		return new Couverture(true, true, true);
 	}
 	
+	public static Rib getFakeRib(){
+		return new Rib("http://images.google.fr/imgres?imgurl=https%3A%2F%2Fmabanque.bnpparibas%2Frsc%2Fcontrib%2Fimage%2Fparticuliers%2Fgabarits-libres%2Frib.jpg&imgrefurl=https%3A%2F%2Fmabanque.bnpparibas%2Ffr%2Fnotre-offre%2Fcomptes-cartes-et-services%2Fgerer-ses-comptes-et-son-budget%2Fgerer-ses-comptes-en-ligne%2Ftutoriels-videos%2Fediter-un-rib&h=944&w=2399&tbnid=ial72vnuV6NdPM%3A&vet=1&docid=mh5__rRIxzuXkM&ei=G914WIiGDoTcaIj4lpAO&tbm=isch&client=firefox-b-ab&iact=rc&uact=3&dur=393&page=0&start=0&ndsp=15&ved=0ahUKEwjI_8Leo7_RAhUELhoKHQi8BeIQMwgcKAAwAA&bih=633&biw=1366");
+	}
 }

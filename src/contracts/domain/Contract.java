@@ -9,6 +9,7 @@ public class Contract {
 	private List<Risk> objetsCouverts = null;
 	private List<Billing> billings = null;
 	private List<PartyRole> partyRoles = null;
+	private List<Rib> listRib = null;
 
 	public Contract(){}
 
@@ -72,4 +73,16 @@ public class Contract {
 		this.partyRoles.add(partyRole);
 	}
 
+	public List<Rib> getListRib() {
+		return listRib;
+	}
+
+	public void setListRib(List<Rib> listRib) {
+		this.listRib = listRib;
+	}
+
+	public void addRib(Rib rib) {
+		if(this.listRib==null) listRib = new ArrayList<>();
+		this.listRib.add(rib);
+	}
 }
