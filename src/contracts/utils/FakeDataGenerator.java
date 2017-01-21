@@ -12,9 +12,9 @@ import contracts.domain.Risk;
 
 public class FakeDataGenerator {
 	
-	public static Person pers1 = new Person("1999-18-09","563155","felix","grt","75005");
-	public static Person pers2 = new Person("1999-19-09","563155","julien","mrgrd","75005");
-	public static Person pers3 = new Person("1999-20-09","563155","anna","kstrkv","75005");
+	public static Person pers1 = new Person("1999-18-09","5631851","felix","grt","75005");
+	public static Person pers2 = new Person("1999-19-09","1781566","julien","mrgrd","75005");
+	public static Person pers3 = new Person("1999-20-09","0684000","anna","kstrkv","75005");
 	public static Person pers = new Person("1999-20-09","563155","philippe","arthaux","75005");
 	
 	public static Contract getFakeContrat(String idContrat){

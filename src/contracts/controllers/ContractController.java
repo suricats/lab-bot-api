@@ -47,21 +47,21 @@ public class ContractController {
 
 	/////////////////////////RISK/////////////////////////
 	@RequestMapping(value="ID-{idContrat}/risk", produces = "application/json ; charset=UTF-8")
-	public ResponseEntity<List<Link>> getRisk(HttpServletRequest request,
+	public ResponseEntity<List<Link>> getCouvertureChoice(HttpServletRequest request,
 			@PathVariable("idContrat") String idContrat) {
 
 		List<Risk> risk = FakeDataGenerator.getFakeContrat(idContrat).getObjetsCouverts();
 		List<Link> listLink = new ArrayList<>();
 		for(int i=0; i<risk.size();i++){
 			listLink.add(linkTo(methodOn(ContractController.class).
-					getCouverture(request,idContrat,risk.get(i).getIdentifiant())).withSelfRel());
+					getCouvertureInfo(request,idContrat,risk.get(i).getIdentifiant())).withSelfRel());
 		}
 		logger.error("Test log");
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
 	}
 
 	@RequestMapping(value="ID-{idContrat}/risk/ID-{idObject}/couverture", produces = "application/json ; charset=UTF-8")
-	public ResponseEntity<Couverture> getCouverture(HttpServletRequest request,
+	public ResponseEntity<Couverture> getCouvertureInfo(HttpServletRequest request,
 			@PathVariable("idContrat") String idContrat,
 			@PathVariable("idObject") String idObject) {
 
@@ -75,7 +75,7 @@ public class ContractController {
 
 	/////////////////////////BILLING/////////////////////////
 	@RequestMapping(value="ID-{idContrat}/billings", produces = "application/json ; charset=UTF-8")
-	public ResponseEntity<List<Link>> getBillings(HttpServletRequest request,
+	public ResponseEntity<List<Link>> getBillingChoice(HttpServletRequest request,
 			@PathVariable("idContrat") String idContrat) {
 
 		List<Billing> billings = FakeDataGenerator.getFakeContrat(idContrat).getBillings();
@@ -83,14 +83,14 @@ public class ContractController {
 		
 		for(int i=0; i<billings.size();i++){
 			listLink.add(linkTo(methodOn(ContractController.class).
-					getBilling(request,idContrat,billings.get(i).getIdentifiant())).withSelfRel());
+					getBillingInfo(request,idContrat,billings.get(i).getIdentifiant())).withSelfRel());
 		}
 		logger.error("Test log");
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
 	}
 
 	@RequestMapping(value="ID-{idContrat}/billings/ID-{idBilling}", produces = "application/json ; charset=UTF-8")
-	public ResponseEntity<Billing> getBilling(HttpServletRequest request,
+	public ResponseEntity<Billing> getBillingInfo(HttpServletRequest request,
 			@PathVariable("idContrat") String idContrat,
 			@PathVariable("idBilling") String idBilling) {
 
@@ -103,7 +103,7 @@ public class ContractController {
 
 	/////////////////////////PARTYROLE/////////////////////////
 	@RequestMapping(value="ID-{idContrat}/partyRoles", produces = "application/json ; charset=UTF-8")
-	public ResponseEntity<List<Link>> getPartyRoles(HttpServletRequest request,
+	public ResponseEntity<List<Link>> getPartyRoleChoice(HttpServletRequest request,
 			@PathVariable("idContrat") String idContrat) {
 
 		List<PartyRole> partyRoles = FakeDataGenerator.getFakeContrat(idContrat).getPartyRoles();
@@ -111,14 +111,14 @@ public class ContractController {
 		
 		for(int i=0; i<partyRoles.size();i++){
 			listLink.add(linkTo(methodOn(ContractController.class).
-					getPartyRole(request,idContrat,partyRoles.get(i).getIdentifiant())).withSelfRel());
+					getPartyRoleInfo(request,idContrat,partyRoles.get(i).getIdentifiant())).withSelfRel());
 		}
 		logger.error("Test log");
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
 	}
 
 	@RequestMapping(value="ID-{idContrat}/partyRoles/ID-{idBilling}", produces = "application/json ; charset=UTF-8")
-	public ResponseEntity<PartyRole> getPartyRole(HttpServletRequest request,
+	public ResponseEntity<PartyRole> getPartyRoleInfo(HttpServletRequest request,
 			@PathVariable("idContrat") String idContrat,
 			@PathVariable("idBilling") String idBilling) {
 
