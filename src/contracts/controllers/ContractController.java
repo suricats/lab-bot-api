@@ -9,6 +9,8 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,16 +29,19 @@ import contracts.utils.FakeDataGenerator;
 @RestController
 @RequestMapping("/insurance/contract")
 public class ContractController {
+	
+	private static final Logger logger = LogManager.getLogger();
 
 	@RequestMapping(value = {"", "/"}, produces = "application/json ; charset=UTF-8")
 	public String index() {
+		logger.error("Test log");
 		return "What else ??";
 	}
 	
 	@RequestMapping(value="ID-{idContrat}", produces = "application/json ; charset=UTF-8")
 	public ResponseEntity<Contract> getContract(HttpServletRequest request,
 			@PathVariable("idContrat") String idContrat) {
-
+		logger.error("Test log");
 		return new ResponseEntity<Contract>(FakeDataGenerator.getFakeContrat(idContrat), HttpStatus.OK);
 	}
 
@@ -51,6 +56,7 @@ public class ContractController {
 			listLink.add(linkTo(methodOn(ContractController.class).
 					getCouverture(request,idContrat,risk.get(i).getIdentifiant())).withSelfRel());
 		}
+		logger.error("Test log");
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
 	}
 
@@ -62,6 +68,7 @@ public class ContractController {
 		Contract c = FakeDataGenerator.getFakeContrat(idContrat);
 		Random random = new Random();
 		int rand = random.nextInt(c.getObjetsCouverts().size());
+		logger.error("Test log");
 		return new ResponseEntity<Couverture>(c.getObjetsCouverts().get(rand).getCouverture(), HttpStatus.OK);
 	}
 
@@ -78,6 +85,7 @@ public class ContractController {
 			listLink.add(linkTo(methodOn(ContractController.class).
 					getBilling(request,idContrat,billings.get(i).getIdentifiant())).withSelfRel());
 		}
+		logger.error("Test log");
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
 	}
 
@@ -89,6 +97,7 @@ public class ContractController {
 		Contract c = FakeDataGenerator.getFakeContrat(idContrat);
 		Random random = new Random();
 		int rand = random.nextInt(c.getBillings().size());
+		logger.error("Test log");
 		return new ResponseEntity<Billing>(c.getBillings().get(rand), HttpStatus.OK);
 	}
 
@@ -104,6 +113,7 @@ public class ContractController {
 			listLink.add(linkTo(methodOn(ContractController.class).
 					getPartyRole(request,idContrat,partyRoles.get(i).getIdentifiant())).withSelfRel());
 		}
+		logger.error("Test log");
 		return new ResponseEntity<List<Link>>(listLink, HttpStatus.OK);
 	}
 
@@ -115,6 +125,7 @@ public class ContractController {
 		Contract c = FakeDataGenerator.getFakeContrat(idContrat);
 		Random random = new Random();
 		int rand = random.nextInt(c.getPartyRoles().size());
+		logger.error("Test log");
 		return new ResponseEntity<PartyRole>(c.getPartyRoles().get(rand), HttpStatus.OK);
 	}
 	
@@ -123,6 +134,7 @@ public class ContractController {
 			@PathVariable("idContrat") String idContrat) {
 
 		Contract c = FakeDataGenerator.getFakeContrat(idContrat);
+		logger.error("Test log");
 		return new ResponseEntity<Rib>(c.getListRib().get(0), HttpStatus.OK);
 	}
 
