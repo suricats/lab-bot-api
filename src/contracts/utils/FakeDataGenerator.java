@@ -31,7 +31,7 @@ public class FakeDataGenerator {
 		contrat.addPartyRole(new PartyRole("78595","2016-12-25",
 				"http://animalfactguide.com/wp-content/uploads/2013/01/iStock_000006798074XSmall.jpg",
 				new Person("1994-12-05", "5639358", 
-				"Thomas", "Dupont", "93700"), "owner"));
+				"Jonathan", "Alimi", "75005"), "owner"));
 		contrat.addPartyRole(new PartyRole("787634", "2016-12-25",
 				"http://www.suricats-consulting.com/wp-content/uploads/2016/05/A1-01-150x150.png",
 				new Person("1994-12-05", "7596055", 
