@@ -121,9 +121,8 @@ public class ContractController {
 			@PathVariable("idBilling") String idBilling) {
 		logger.info("getPartyRoleInfo");
 		Contract c = FakeDataGenerator.getFakeContrat(idContrat);
-		Random random = new Random();
-		int rand = random.nextInt(c.getPartyRoles().size());
-		return new ResponseEntity<PartyRole>(c.getPartyRoles().get(1), HttpStatus.OK);
+		int rand = new Random().nextInt(c.getPartyRoles().size());
+		return new ResponseEntity<PartyRole>(c.getPartyRoles().get(rand), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="ID-{idContrat}/partyRoles/ID-{idBilling}/name", produces = "application/json ; charset=UTF-8")
