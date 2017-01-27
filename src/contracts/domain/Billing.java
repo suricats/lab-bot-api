@@ -1,8 +1,6 @@
 package contracts.domain;
 
-import org.springframework.hateoas.ResourceSupport;
-
-public class Billing extends ResourceSupport {
+public class Billing {
 	
 	private String identifiant;
 	private double amount;
